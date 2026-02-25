@@ -2,7 +2,9 @@
 
 Selecting the most informative samples to annotate from large medical image datasets, without requiring any model training. We build a neighborhood graph over pretrained image representations and use multi-hop connectivity to measure how well a small subset covers the full dataset. Samples are selected greedily to maximize this coverage, ensuring the chosen subset captures the underlying structure of the data.
 
-![Method Overview](overview.svg)
+<p align="center">
+  <img src="overview.svg" width="100%">
+</p>
 
 ## Setup
 
