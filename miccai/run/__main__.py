@@ -199,8 +199,8 @@ Examples:
     # Graph method settings
     parser.add_argument('-k', '--k-neighbors', type=int, default=10,
                         help='k for k-NN graph construction (default: 10)')
-    parser.add_argument('--k-hops', type=int, default=2,
-                        help='Number of hops for graph neighborhood (default: 2)')
+    parser.add_argument('--k-hops', type=int, default=None,
+                        help='Number of hops for graph neighborhood (default: per-method, e.g. graph_a2=2)')
     parser.add_argument('--coverage-mode', type=str, default='prob',
                         choices=['prob', 'max'],
                         help='Coverage mode for global_influence: prob (probabilistic) or max (default: prob)')

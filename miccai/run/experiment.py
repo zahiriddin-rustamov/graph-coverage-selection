@@ -399,7 +399,7 @@ def run_single(
             dataset_name, embedding_source, method, ratio,
             importance_method,
             config.get('k_neighbors', 10),
-            config.get('k_hops', 2),
+            config.get('k_hops'),  # None = per-method default
             config.get('walk_length', 5),
             config.get('gamma', 0.85),
             config.get('coverage_mode', 'prob'),
@@ -415,6 +415,20 @@ def run_single(
                   f"(original selection took {selection_time:.2f}s)")
     else:
         t_select_start = time.time()
+        # Build method overrides — only include params that were explicitly set
+        # so that per-method defaults in spec.kwargs are preserved
+        method_overrides = {
+            'k_neighbors': config.get('k_neighbors', 10),
+            'walk_length': config.get('walk_length', 5),
+            'gamma': config.get('gamma', 0.85),
+            'coverage_mode': config.get('coverage_mode', 'prob'),
+            'global_selection': config.get('global_selection', False),
+            'sparse_cpu': config.get('sparse_cpu', False),
+        }
+        # k_hops: only override if explicitly set (None means use per-method default)
+        if config.get('k_hops') is not None:
+            method_overrides['k_hops'] = config['k_hops']
+
         selected = select(
             method=method,
             labels=labels,
@@ -431,14 +445,7 @@ def run_single(
             seed=seed,
             verbose=verbose,
             _verbose_level=_verbose_level,
-            # Graph method overrides
-            k_neighbors=config.get('k_neighbors', 10),
-            k_hops=config.get('k_hops', 2),
-            walk_length=config.get('walk_length', 5),
-            gamma=config.get('gamma', 0.85),
-            coverage_mode=config.get('coverage_mode', 'prob'),
-            global_selection=config.get('global_selection', False),
-            sparse_cpu=config.get('sparse_cpu', False),
+            **method_overrides,
         )
         selection_time = time.time() - t_select_start
 
