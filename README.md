@@ -73,3 +73,15 @@ python -m miccai.run.compare_global \
 | `--global` | Global graph construction |
 
 Results are saved to `miccai/results/runs/<run_id>/`.
+
+## Selection Visualizations
+
+<p align="center">
+  <img src="selection_viz_organamnist.png" width="100%"><br>
+  <sub>More hops reduce redundancy: each selected sample implicitly covers a wider neighborhood, forcing the algorithm to pick from regions not yet reachable. E.g., the green and orange classes go from tightly clustered selections under 1-hop to broadly distributed under 2- and 3-hop coverage.</sub>
+</p>
+
+<p align="center">
+  <img src="selection_viz_dermamnist.png" width="100%"><br>
+  <sub>Global selection spends budget where it matters: more samples in ambiguous, overlapping regions, fewer in compact clusters already well-represented by a single pick.</sub>
+</p>
