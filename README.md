@@ -85,3 +85,7 @@ Results are saved to `graphcov/results/runs/<run_id>/`.
   <img src="selection_viz_dermamnist.png" width="100%"><br>
   <sub><b>DermaMNIST.</b> Global selection spends budget where it matters: more samples in ambiguous, overlapping regions, fewer in compact clusters already well-represented by a single pick.</sub>
 </p>
+
+## Citation
+
+<!-- coming soon -->
