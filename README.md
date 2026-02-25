@@ -16,7 +16,7 @@ pip install torch torchvision medmnist numpy pandas scikit-learn scipy tqdm fais
 
 ```bash
 # Run selection + evaluation
-python -m miccai.run \
+python -m graphcov.run \
     --datasets organsmnist \
     --methods graph_a2 facility fps herding random \
     --embeddings uni \
@@ -26,12 +26,12 @@ python -m miccai.run \
     --iterations 1000
 
 # List available methods, datasets, embeddings
-python -m miccai.run --list-methods
-python -m miccai.run --list-datasets
-python -m miccai.run --list-embeddings
+python -m graphcov.run --list-methods
+python -m graphcov.run --list-datasets
+python -m graphcov.run --list-embeddings
 
 # Ablation: compare k values
-python -m miccai.run.compare_k \
+python -m graphcov.run.compare_k \
     --dataset organsmnist \
     --method graph_a2 \
     --embedding uni \
@@ -39,7 +39,7 @@ python -m miccai.run.compare_k \
     --ratio 0.02 --train --trials 3
 
 # Ablation: compare global vs per-class graph
-python -m miccai.run.compare_global \
+python -m graphcov.run.compare_global \
     --dataset organsmnist \
     --method graph_a2 \
     --embedding uni \
@@ -72,7 +72,7 @@ python -m miccai.run.compare_global \
 | `--k-hops` | Propagation depth (default: 2) |
 | `--global` | Global graph construction |
 
-Results are saved to `miccai/results/runs/<run_id>/`.
+Results are saved to `graphcov/results/runs/<run_id>/`.
 
 ## Selection Visualizations
 

@@ -1,9 +1,9 @@
 """Visualize MedMNIST dataset embeddings via t-SNE, colored by class.
 
 Usage:
-    python -m miccai.run.visualize_datasets --datasets organsmnist pneumoniamnist --embeddings imagenet
-    python -m miccai.run.visualize_datasets --datasets organsmnist --embeddings imagenet uni --size 224
-    python -m miccai.run.visualize_datasets --datasets tissuemnist --embeddings imagenet --max-samples 10000
+    python -m graphcov.run.visualize_datasets --datasets organsmnist pneumoniamnist --embeddings imagenet
+    python -m graphcov.run.visualize_datasets --datasets organsmnist --embeddings imagenet uni --size 224
+    python -m graphcov.run.visualize_datasets --datasets tissuemnist --embeddings imagenet --max-samples 10000
 """
 
 import argparse
@@ -83,7 +83,7 @@ def main():
     parser.add_argument('--max-samples', type=int, default=10000,
                         help='Max samples for subsampled figure (default: 10000)')
     parser.add_argument('--split', type=str, default='train', choices=['train', 'test'])
-    parser.add_argument('--output-dir', type=str, default='miccai/figures')
+    parser.add_argument('--output-dir', type=str, default='graphcov/figures')
     args = parser.parse_args()
 
     import matplotlib
@@ -110,7 +110,7 @@ def main():
                 dataset_name=dataset_name, split=args.split, source=emb_source,
                 dataset=dataset, num_classes=num_classes, in_channels=in_channels,
                 size=args.size, seed=args.seed,
-                cache_dir=Path('miccai/cache/embeddings'), verbose=True)
+                cache_dir=Path('graphcov/cache/embeddings'), verbose=True)
             all_embeddings[emb_source] = emb_data['embeddings']
 
         emb_str = '_'.join(args.embeddings)

@@ -684,7 +684,7 @@ def load_or_compute_embeddings(
         size: Image size
         seed: Random seed
         trained_epochs: Epochs for 'trained' source (default: 200)
-        cache_dir: Cache directory (default: miccai/cache/embeddings)
+        cache_dir: Cache directory (default: graphcov/cache/embeddings)
         force_recompute: If True, ignore cache
         verbose: Print extraction details
         return_model: If True, include trained model in result (forces recompute if cached)

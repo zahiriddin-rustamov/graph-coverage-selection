@@ -2,10 +2,10 @@
 Visualize selected subsets using t-SNE on embeddings.
 
 Runs selection (no training) and plots the selections overlaid on the full dataset.
-Uses the same arguments as miccai.run to ensure identical selections.
+Uses the same arguments as graphcov.run to ensure identical selections.
 
 Usage:
-    python -m miccai.run.visualize_selection \
+    python -m graphcov.run.visualize_selection \
         --dataset dermamnist \
         --methods graph_a2 graph_a2 \
         --labels "per-class" "global" \
@@ -16,7 +16,7 @@ Usage:
         --size 224
 
     # Single method visualization
-    python -m miccai.run.visualize_selection \
+    python -m graphcov.run.visualize_selection \
         --dataset dermamnist \
         --methods graph_a2 \
         --embedding uni \
@@ -231,7 +231,7 @@ def main():
     parser = argparse.ArgumentParser(
         description='Visualize selected subsets using t-SNE')
 
-    # Selection args (match miccai.run)
+    # Selection args (match graphcov.run)
     parser.add_argument('--dataset', required=True, help='Dataset name')
     parser.add_argument('--methods', nargs='+', required=True, help='Selection methods')
     parser.add_argument('--labels', nargs='+', default=None,
@@ -246,7 +246,7 @@ def main():
     parser.add_argument('--sparse-cpu', action='store_true')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--size', type=int, default=224)
-    parser.add_argument('--cache', default='miccai/cache/embeddings')
+    parser.add_argument('--cache', default='graphcov/cache/embeddings')
 
     # Plot args
     parser.add_argument('--perplexity', type=float, default=30,

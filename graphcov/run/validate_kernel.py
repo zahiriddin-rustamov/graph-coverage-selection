@@ -6,8 +6,8 @@ Compares at the SELECTION level — do both kernels select the same samples?
 Also compares per-sample coverage scores (row sums).
 
 Usage:
-    python -m miccai.run.validate_kernel
-    python -m miccai.run.validate_kernel --datasets organsmnist bloodmnist --k 5 10
+    python -m graphcov.run.validate_kernel
+    python -m graphcov.run.validate_kernel --datasets organsmnist bloodmnist --k 5 10
 """
 
 import numpy as np
@@ -19,9 +19,9 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from miccai.run.data import load_dataset, get_labels
-from miccai.run.embeddings import load_or_compute_embeddings
-from miccai.run.graph import build_knn_graph, build_adjacency_matrix
+from graphcov.run.data import load_dataset, get_labels
+from graphcov.run.embeddings import load_or_compute_embeddings
+from graphcov.run.graph import build_knn_graph, build_adjacency_matrix
 
 
 DATASETS = ['organsmnist', 'organamnist', 'pathmnist', 'tissuemnist', 'bloodmnist']

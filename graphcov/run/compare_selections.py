@@ -2,9 +2,9 @@
 
 import numpy as np
 from pathlib import Path
-from miccai.run.data import load_dataset, get_labels
-from miccai.run.embeddings import load_or_compute_embeddings
-from miccai.run.selection import select
+from graphcov.run.data import load_dataset, get_labels
+from graphcov.run.embeddings import load_or_compute_embeddings
+from graphcov.run.selection import select
 
 
 def jaccard(a, b):
@@ -132,7 +132,7 @@ def visualize(embeddings, labels, selections, args):
                  f'k={args.k_neighbors}{global_str}', fontsize=13)
     plt.tight_layout()
 
-    out_path = f'miccai/figures/compare_{args.dataset}_{args.embedding}_k{args.k_neighbors}_r{args.ratio}{global_str}.png'
+    out_path = f'graphcov/figures/compare_{args.dataset}_{args.embedding}_k{args.k_neighbors}_r{args.ratio}{global_str}.png'
     Path(out_path).parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(out_path, dpi=150, bbox_inches='tight')
     print(f"\nFigure saved: {out_path}")
@@ -163,7 +163,7 @@ def main():
         dataset_name=args.dataset, split='train', source=args.embedding,
         dataset=dataset, num_classes=num_classes, in_channels=in_channels,
         size=args.size, seed=args.seed,
-        cache_dir=Path('miccai/cache/embeddings'), verbose=True)
+        cache_dir=Path('graphcov/cache/embeddings'), verbose=True)
     embeddings = emb_data['embeddings']
 
     budget_per_class = max(1, int(len(labels) * args.ratio / num_classes))

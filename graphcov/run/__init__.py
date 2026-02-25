@@ -1,13 +1,13 @@
 """
-MICCAI Experiment Runner
+GraphCov Experiment Runner
 
 Structured experiment framework for sample selection methods.
 
 Usage:
-    python -m miccai.run --datasets organsmnist --methods fps --embeddings uni --ratios 0.02
+    python -m graphcov.run --datasets organsmnist --methods fps --embeddings uni --ratios 0.02
 
     # With importance weighting (optional modifier)
-    python -m miccai.run --datasets organsmnist --embeddings uni \
+    python -m graphcov.run --datasets organsmnist --embeddings uni \
         --methods facility --importance test_attention --ratios 0.02
 """
 

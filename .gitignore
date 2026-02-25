@@ -1,4 +1,4 @@
 __pycache__/
 *.pyc
-miccai/cache/
-miccai/results/
+graphcov/cache/
+graphcov/results/

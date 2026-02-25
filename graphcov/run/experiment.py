@@ -577,8 +577,8 @@ def run_experiment(config: Dict) -> str:
             - momentum: SGD momentum (default 0.9)
             - weight_decay: Weight decay (default 0.0005)
             - seed: Base random seed (default 42)
-            - output_dir: Output directory (default miccai/results)
-            - cache_dir: Cache directory (default miccai/cache/embeddings)
+            - output_dir: Output directory (default graphcov/results)
+            - cache_dir: Cache directory (default graphcov/cache/embeddings)
 
     Returns:
         run_id: Identifier for this run
@@ -1068,7 +1068,7 @@ def analyze_run(
 
     Args:
         run_id: Run identifier (e.g., '20240110_143052')
-        output_dir: Results directory (default: miccai/results)
+        output_dir: Results directory (default: graphcov/results)
         ratios: Optional list of ratios to display
     """
     if output_dir is None:

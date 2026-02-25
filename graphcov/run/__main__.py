@@ -1,25 +1,25 @@
 """
-CLI entry point for miccai.run
+CLI entry point for graphcov.run
 
 Usage:
     # Basic selection methods
-    python -m miccai.run --datasets organsmnist --methods fps --embeddings uni --ratios 0.02
+    python -m graphcov.run --datasets organsmnist --methods fps --embeddings uni --ratios 0.02
 
     # With importance weighting (optional modifier)
-    python -m miccai.run --datasets organsmnist --embeddings uni \
+    python -m graphcov.run --datasets organsmnist --embeddings uni \
         --methods facility --importance test_attention --ratios 0.02
 
     # Compare methods with and without importance
-    python -m miccai.run --datasets organsmnist --embeddings uni \
+    python -m graphcov.run --datasets organsmnist --embeddings uni \
         --methods fps facility --importance test_attention uniform --ratios 0.02
 
-    python -m miccai.run --list-methods
-    python -m miccai.run --list-importance
-    python -m miccai.run --list-datasets
-    python -m miccai.run --list-embeddings
+    python -m graphcov.run --list-methods
+    python -m graphcov.run --list-importance
+    python -m graphcov.run --list-datasets
+    python -m graphcov.run --list-embeddings
 
-    python -m miccai.run --list-runs
-    python -m miccai.run --analyze RUN_ID
+    python -m graphcov.run --list-runs
+    python -m graphcov.run --analyze RUN_ID
 """
 
 import argparse
@@ -43,17 +43,17 @@ def parse_args():
         epilog="""
 Examples:
   # Basic selection methods
-  python -m miccai.run --datasets organsmnist --embeddings uni --methods fps --ratios 0.05 --trials 1
+  python -m graphcov.run --datasets organsmnist --embeddings uni --methods fps --ratios 0.05 --trials 1
 
   # Multiple methods comparison
-  python -m miccai.run --datasets organsmnist \
+  python -m graphcov.run --datasets organsmnist \
                        --embeddings uni \
                        --methods random fps facility graph_facility \
                        --ratios 0.02 0.05 0.1 \
                        --trials 3
 
   # With importance weighting (optional modifier for compatible methods)
-  python -m miccai.run --datasets organsmnist \
+  python -m graphcov.run --datasets organsmnist \
                        --embeddings uni \
                        --methods facility fps \
                        --importance test_attention \
@@ -61,7 +61,7 @@ Examples:
                        --trials 3
 
   # Compare multiple importance methods
-  python -m miccai.run --datasets organsmnist \
+  python -m graphcov.run --datasets organsmnist \
                        --embeddings uni \
                        --methods facility \
                        --importance uniform density test_attention \
@@ -69,14 +69,14 @@ Examples:
                        --trials 3
 
   # Methods that require importance (global_influence, graph_coverage)
-  python -m miccai.run --datasets organsmnist \
+  python -m graphcov.run --datasets organsmnist \
                        --embeddings uni \
                        --methods global_influence \
                        --importance test_attention \
                        --ratios 0.02
 
   # With importance propagation
-  python -m miccai.run --datasets organsmnist \
+  python -m graphcov.run --datasets organsmnist \
                        --embeddings uni \
                        --methods facility \
                        --importance test_attention \
@@ -84,18 +84,18 @@ Examples:
                        --ratios 0.02
 
   # EVA method (no embeddings needed)
-  python -m miccai.run --datasets organsmnist --methods eva --ratios 0.02 0.05
+  python -m graphcov.run --datasets organsmnist --methods eva --ratios 0.02 0.05
 
   # List available options
-  python -m miccai.run --list-methods
-  python -m miccai.run --list-importance
-  python -m miccai.run --list-datasets
-  python -m miccai.run --list-embeddings
+  python -m graphcov.run --list-methods
+  python -m graphcov.run --list-importance
+  python -m graphcov.run --list-datasets
+  python -m graphcov.run --list-embeddings
 
   # Analyze past runs
-  python -m miccai.run --list-runs
-  python -m miccai.run --analyze 20240110_143052
-  python -m miccai.run --analyze all  # analyze all runs together
+  python -m graphcov.run --list-runs
+  python -m graphcov.run --analyze 20240110_143052
+  python -m graphcov.run --analyze all  # analyze all runs together
         """
     )
 
@@ -214,9 +214,9 @@ Examples:
 
     # I/O settings
     parser.add_argument('--output', type=str, default=None,
-                        help='Output directory (default: miccai/results)')
+                        help='Output directory (default: graphcov/results)')
     parser.add_argument('--cache', type=str, default=None,
-                        help='Cache directory (default: miccai/cache/embeddings)')
+                        help='Cache directory (default: graphcov/cache/embeddings)')
     parser.add_argument('--force-recompute', action='store_true',
                         help='Force recomputation of cached embeddings')
     parser.add_argument('-v', '--verbose', action='store_true', default=True,
@@ -308,7 +308,7 @@ def validate_args(args):
 
 
 def main():
-    print(f"[CMD] python -u -m miccai.run {' '.join(sys.argv[1:])}")
+    print(f"[CMD] python -u -m graphcov.run {' '.join(sys.argv[1:])}")
     args = parse_args()
 
     # Handle list commands

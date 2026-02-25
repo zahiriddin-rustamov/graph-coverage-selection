@@ -5,8 +5,8 @@ Shows how facility location (dense N×N matrix) scales compared to
 graph_a2 (sparse k-NN), herding, and FPS.
 
 Usage:
-    python -m miccai.run.timing_comparison
-    python -m miccai.run.timing_comparison --dataset tissuemnist --sizes 1000 5000 10000 20000 50000
+    python -m graphcov.run.timing_comparison
+    python -m graphcov.run.timing_comparison --dataset tissuemnist --sizes 1000 5000 10000 20000 50000
 """
 
 import numpy as np
@@ -17,9 +17,9 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from miccai.run.data import load_dataset, get_labels
-from miccai.run.embeddings import load_or_compute_embeddings
-from miccai.run.selection import select
+from graphcov.run.data import load_dataset, get_labels
+from graphcov.run.embeddings import load_or_compute_embeddings
+from graphcov.run.selection import select
 
 
 METHODS = ['facility', 'graph_a2', 'herding', 'fps']
@@ -76,7 +76,7 @@ def main():
     parser.add_argument('--budget-ratio', type=float, default=0.05)
     parser.add_argument('--k', type=int, default=5)
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--output-dir', default='miccai/figures')
+    parser.add_argument('--output-dir', default='graphcov/figures')
     args = parser.parse_args()
 
     output_path = Path(args.output_dir)
