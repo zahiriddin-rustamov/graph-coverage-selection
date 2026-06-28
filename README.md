@@ -93,7 +93,7 @@ Results are saved to `graphcov/results/runs/<run_id>/`.
 If you use this code, please cite:
 
 ```bibtex
-@misc{rustamov2026oneshotdataselectionmedical,
+@misc{Rustamov2026,
   title={One-Shot Data Selection for Medical Image Classification via Graph Coverage},
   author={Zahiriddin Rustamov and Nadia Badawi and Rafat Damseh and Nazar Zaki},
   year={2026},
