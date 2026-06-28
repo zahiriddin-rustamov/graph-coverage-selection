@@ -1,6 +1,8 @@
 # One-Shot Data Selection for Medical Image Classification via Graph Coverage
 
-Selecting the most informative samples to annotate from large medical image datasets, without requiring any model training. We build a neighborhood graph over pretrained image representations and use multi-hop connectivity to measure how well a small subset covers the full dataset. Samples are selected greedily to maximize this coverage, ensuring the chosen subset captures the underlying structure of the data.
+Official implementation of *One-Shot Data Selection for Medical Image Classification via Graph Coverage* (MICCAI 2026).
+
+Given a labeled training pool of medical images, this method selects a small representative subset that preserves downstream classification accuracy, without any model training during selection. We build a *k*-nearest neighbor graph over frozen foundation-model embeddings and derive a two-term coverage kernel from the heat diffusion kernel; greedy facility location on this kernel yields a class-balanced subset that maximizes coverage of the data manifold.
 
 <p align="center">
   <img src="overview.svg" width="100%">
@@ -88,4 +90,16 @@ Results are saved to `graphcov/results/runs/<run_id>/`.
 
 ## Citation
 
-<!-- coming soon -->
+If you use this code, please cite:
+
+```bibtex
+@misc{rustamov2026oneshotdataselectionmedical,
+  title={One-Shot Data Selection for Medical Image Classification via Graph Coverage},
+  author={Zahiriddin Rustamov and Nadia Badawi and Rafat Damseh and Nazar Zaki},
+  year={2026},
+  eprint={2606.22002},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2606.22002}
+}
+```
